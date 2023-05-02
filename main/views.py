@@ -6,11 +6,11 @@ from django.utils import timezone
 
 def detail(request, id):
     post = get_object_or_404(Post, pk = id)
-    return render(request, 'main/detail.html', {'blog':blog})
+    return render(request, 'main/detail.html', {'post':post})
 
 def mainpage(request):
-    Posts = Post.objects.all()
-    return render(request, 'main/mainpage.html')
+    posts = Post.objects.all()
+    return render(request, 'main/mainpage.html', {'posts':posts})
 
 def secondpage(request):
     return render(request, 'main/secondpage.html')
@@ -18,7 +18,7 @@ def secondpage(request):
 def create(request):
     new_post = Post()
     new_post.title = request.POST['title']
-    new_post.wirter = request.POST['writer']
+    new_post.writer = request.POST['writer']
     new_post.pub_date = timezone.now()
     new_post.body = request.POST['body']
     new_post.weather = request.POST['weather']

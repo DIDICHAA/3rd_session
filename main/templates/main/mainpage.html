@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{%load static %}
+{% load static %}
 {% block content %}
 
   <h1>안녕하세요!
@@ -17,7 +17,7 @@
           <h3>{{post.title}}</h3>
           {{post.writer}}</br>
           {{post.summary}}
-          <a href=""{%url 'deatil' post.id %}"> ...more</a>"
+          <a href="{%url 'detail' post.id %}"> ...more</a>
           <br>
       </div>
       {% endfor %} 

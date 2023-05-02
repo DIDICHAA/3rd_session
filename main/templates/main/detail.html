@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{%load static %}
+{% load static %}
 
 {% block content %}
 
 <h1>{{post.title}}</h1>
-writer : {{blog.writer}}
-date : {{blog.pub_date}}
+writer : {{post.writer}}
+date : {{post.pub_date}}
 <hr>
-<p>{{blog.body}}</p>
+<p>{{post.body}}</p>
 
 {% endblock %}
