@@ -21,10 +21,12 @@ def create(request):
     new_post.wirter = request.POST['writer']
     new_post.pub_date = timezone.now()
     new_post.body = request.POST['body']
+    new_post.weather = request.POST['weather']
+    new_post.image = request.POST['image']
 
     new_post.save()
 
-    return redirect('detail', new_blog.id)
+    return redirect('detail', new_post.id)
 
 def new(request):
     return render(request, 'main/new.html')
