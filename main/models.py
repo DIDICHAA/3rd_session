@@ -8,8 +8,9 @@ class Post(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     weather = models.CharField(max_length=10, default=None, null=True)
-    image =  models.CharField(max_length=100, default=None, null=True)
-
+    video =  models.CharField(max_length=100, default=None, null=True)
+    image = models.ImageField(upload_to="post/", blank=True, null=True)
+    
     def __str__(self):
         return self.title
 

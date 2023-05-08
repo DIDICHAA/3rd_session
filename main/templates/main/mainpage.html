@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 
   <h1>안녕하세요!
@@ -7,7 +8,7 @@
   </h1>
   <img src = "{% static 'images/kuromi.gif' %}" style = "width:600px;">
   <br>
-  <a href="{% url 'new' %}">글 쓰기</a>
+  <a href="{% url 'main:new' %}">글 쓰기</a>
 
   <h1>글 목록</h1>
 
@@ -17,7 +18,7 @@
           <h3>{{post.title}}</h3>
           {{post.writer}}</br>
           {{post.summary}}
-          <a href="{%url 'detail' post.id %}"> ...more</a>
+          <a href="{%url 'main:detail' post.id %}"> ...more</a>
           <br>
       </div>
       {% endfor %} 
