@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %} 
+<h1>Mypage</h1>
+
+<h4>{{ user.profile.nickname }}님 하이룽☺︎</h4>
+<h5>↓ 내가 쓴 글 목록 ↓</h5>
+<ul>
+    {% for post in posts %}
+        <li><a href="{% url 'main:detail' post.id %}">{{ post.title }}</a></li>
+    {% empty %}
+        <li>No posts found!</li>
+    {% endfor %}
+</ul>
+{% endblock %}

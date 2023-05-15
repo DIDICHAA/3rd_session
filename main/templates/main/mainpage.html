@@ -3,19 +3,17 @@
 
 {% block content %}
 
-  <h1>안녕하세요!
-    동국대학교 멋쟁이사자차럼 11기 백엔드 서지은입니다 :>
-  </h1>
-  <img src = "{% static 'images/kuromi.gif' %}" style = "width:600px;">
+  <h1>빙글빙글 돌아가는 지은이의 하루</h1>
+  <img src = "{% static 'images/kuromi.gif' %}" style = "width:400px;">
   <br>
   <a href="{% url 'main:new' %}">글 쓰기</a>
 
-  <h1>글 목록</h1>
+  <h2>글 목록</h2>
 
   <div>
       {% for post in posts %} 
       </div>
-          <h3>{{post.title}}</h3>
+          <h4>{{post.title}}</h4>
           {{post.writer}}</br>
           {{post.summary}}
           <a href="{%url 'main:detail' post.id %}"> ...more</a>
