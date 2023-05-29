@@ -6,7 +6,9 @@
   <h1>빙글빙글 돌아가는 지은이의 하루</h1>
   <img src = "{% static 'images/kuromi.gif' %}" style = "width:400px;">
   <br>
+  {% if user.is_authenticated %}
   <a href="{% url 'main:new' %}">글 쓰기</a>
+  {% endif %}
 
   <h2>글 목록</h2>
 
@@ -15,7 +17,7 @@
       </div>
           <h4>{{post.title}}</h4>
           {{post.writer}}</br>
-          {{post.summary}}
+         <h4> {{post.summary}} </h4>
           <a href="{%url 'main:detail' post.id %}"> ...more</a>
           <br>
       </div>

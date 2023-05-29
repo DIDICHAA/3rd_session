@@ -12,7 +12,33 @@ weather : {{post.weather}}
     <p><img src="{{post.image.url}}" alt="사진"></p>
 {% endif %}
 <p>{{post.body}}</p>
+{% if post.writer == user %}
 <a href = "{% url 'main:edit' post.id %}">edit</a>
-<a href = "{ %url 'main:delete' post.id %}">delete</a>
+<a href = "{% url 'main:delete' post.id %}">delete</a>
+{% endif %}
 
+<div class="comment_container">
+    <div class="comment_form">
+        <h2>Comment</h2>
+        <form method="POST" action="{% url 'main:detail' post.id %}">
+            {%csrf_token%}
+            <input type="text" name="content">
+            <input type="submit" name="submit">
+        </form>
+    </div>
+    <div class="comment_list">
+        {% for c in comments %}
+        <hr>
+        <h5>writer : {{c.writer}}</h5>
+        <p>comment : {{c.content}}</p>
+        {% if c.writer == user %} 
+            <form method="POST" action="{% url 'main:delete_comment' c.id %}">
+                {% csrf_token %}
+                <button type="submit">delete</button>
+            </form>
+        {% endif %}
+        <p>{{c.pub_date}}</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
