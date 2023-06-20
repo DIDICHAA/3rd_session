@@ -4,7 +4,7 @@
 {% block content %}
 
 <h1>{{post.title}}</h1>
-writer : {{post.writer}}
+<a href="{% url 'users:mypage' post.writer.id %}">writer : {{post.writer}}</a>
 date : {{post.pub_date}}
 weather : {{post.weather}}
 <hr>
@@ -16,6 +16,16 @@ weather : {{post.weather}}
 <a href = "{% url 'main:edit' post.id %}">edit</a>
 <a href = "{% url 'main:delete' post.id %}">delete</a>
 {% endif %}
+
+<a href="{% url 'main:likes' post.id %}">
+    {% if user in post.like.all %} 
+    cancel
+    {% else %}
+    like
+    {% endif %} 
+</a>
+
+{{post.like_count}}개
 
 <div class="comment_container">
     <div class="comment_form">
